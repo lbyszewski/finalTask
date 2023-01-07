@@ -26,6 +26,6 @@ public class Person {
     private String city;
 
     @Column(name = "emailAddress")
-    private String emailAdress;
+    private String emailAddress;
 
 }

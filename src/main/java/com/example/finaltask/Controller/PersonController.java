@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/person")
 public class PersonController {
 
-    private IPerson personSaver;
+    private final IPerson personSaver;
     @PostMapping(value = "/save")
     public Person savePersonEntityToDatabase(@RequestBody Person person){
         return personSaver.addPerson(person);
