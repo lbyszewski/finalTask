@@ -1,4 +1,4 @@
-package com.example.finaltask;
+package com.example.finaltask.Controller;
 
 import com.example.finaltask.CRUDInterfaces.IPerson;
 import com.example.finaltask.Entity.Person;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(name = "/person")
+@RequestMapping(value = "/person")
 public class PersonController {
 
     private IPerson personSaver;
-    @PostMapping("/save")
+    @PostMapping(value = "/save")
     public Person savePersonEntityToDatabase(@RequestBody Person person){
         return personSaver.addPerson(person);
     }
