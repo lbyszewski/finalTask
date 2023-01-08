@@ -6,7 +6,7 @@ import com.example.finaltask.Entity.Person;
 public interface IPerson {
 
     Person addPerson(Person person);
-    Person readPerson(Person person);
-    Person updatePerson(Person person);
-    Person deletePerson(Person person);
+    Person readPerson(Long id);
+    void updatePerson(Person person,Long id);
+    void deletePerson(Long id);
 }

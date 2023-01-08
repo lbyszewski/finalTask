@@ -3,6 +3,7 @@ package com.example.finaltask.Services;
 import com.example.finaltask.CRUDInterfaces.IPerson;
 import com.example.finaltask.Entity.Person;
 import com.example.finaltask.Repository.PersonRepo;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +18,27 @@ public class PersonService implements IPerson {
     }
 
     @Override
-    public Person readPerson(Person person) {
-        return null;
+    public Person readPerson(Long personId) {
+        Person personFind = personRepo.findById(personId).orElse(null);
+        return personFind;
     }
 
     @Override
-    public Person updatePerson(Person person) {
-        return null;
+    @Transactional
+    public void updatePerson(Person person, Long id) {
+
+
+
+            Person personUdpater = personRepo.findById(person.getIdPerson()).orElseThrow();
+                personUdpater.setFirstName(person.getFirstName());
+                personUdpater.setLastName(person.getLastName());
+                personRepo.save(personUdpater);
+
+
     }
 
     @Override
-    public Person deletePerson(Person person) {
-        return null;
+    public void deletePerson(Long id) {
+       personRepo.deleteById(id);
     }
 }
